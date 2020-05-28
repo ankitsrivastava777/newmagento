@@ -28,8 +28,6 @@ class Post extends \Magento\Framework\App\Action\Action
         $this->_scopeConfig = $scopeConfig;
         $this->_logLoggerInterface = $loggerInterface;
         $this->messageManager = $context->getMessageManager();
-
-
         parent::__construct($context);
     }
 
@@ -41,11 +39,8 @@ class Post extends \Magento\Framework\App\Action\Action
             $this->_inlineTranslation->suspend();
             $storeScope = \Magento\Store\Model\ScopeInterface::SCOPE_STORE;
 
-
             $sentToEmail = $this->_scopeConfig->getValue('trans_email/ident_support/email', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
             $sentToName = $this->_scopeConfig->getValue('trans_email/ident_support/name', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
-
-            // print_r($sentToName); exit;
 
             $abc = array($sentToEmail, $sentToName);
             // print_r($abc); exit;
@@ -71,14 +66,12 @@ class Post extends \Magento\Framework\App\Action\Action
                 ])
                 ->setFrom($sender)
                 ->addTo($sentToEmail)
-                //->addTo('owner@example.com','owner')
                 ->getTransport();
 
             $transport->sendMessage();
 
             $this->_inlineTranslation->resume();
             $this->messageManager->addSuccess('Email sent successfully');
-            // $this->_redirect('customemail/index/index');
         } catch (\Exception $e) {
             $this->messageManager->addError($e->getMessage());
             $this->_logLoggerInterface->debug($e->getMessage());
