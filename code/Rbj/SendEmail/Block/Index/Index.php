@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Excellence\Smtpemail\Block\Index;
+namespace Rbj\SendEmail\Block\Index;
 
 class Index extends \Magento\Framework\View\Element\Template
 {
@@ -18,6 +18,5 @@ class Index extends \Magento\Framework\View\Element\Template
     ) {
         parent::__construct($context, $data);
     }
-    
 }
 

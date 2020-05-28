@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Excellence\Smtpemail\Controller\Index;
+namespace Rbj\SendEmail\Controller\Index;
 
 class Index extends \Magento\Framework\App\Action\Action
 {
@@ -27,13 +27,6 @@ class Index extends \Magento\Framework\App\Action\Action
      *
      * @return \Magento\Framework\Controller\ResultInterface
      */
-        public function _prepareLayout()
-    {
-
-        $this->pageConfig->getTitle()->set(__('Feedback'));
-
-        return parent::_prepareLayout();
-    }
     public function execute()
     {
         return $this->resultPageFactory->create();
