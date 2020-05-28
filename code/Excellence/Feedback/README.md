@@ -1,6 +1,6 @@
-# Mage2 Module Excellence Smtpemail
+# Mage2 Module Excellence Feedback
 
-    ``excellence/module-smtpemail``
+    ``excellence/module-feedback``
 
  - [Main Functionalities](#markdown-header-main-functionalities)
  - [Installation](#markdown-header-installation)
@@ -18,7 +18,7 @@
 ### Type 1: Zip file
 
  - Unzip the zip file in `app/code/Excellence`
- - Enable the module by running `php bin/magento module:enable Excellence_Smtpemail`
+ - Enable the module by running `php bin/magento module:enable Excellence_Feedback`
  - Apply database updates by running `php bin/magento setup:upgrade`\*
  - Flush the cache by running `php bin/magento cache:flush`
 
@@ -29,8 +29,8 @@
     - public repository `packagist.org`
     - public github repository as vcs
  - Add the composer repository to the configuration by running `composer config repositories.repo.magento.com composer https://repo.magento.com/`
- - Install the module composer by running `composer require excellence/module-smtpemail`
- - enable the module by running `php bin/magento module:enable Excellence_Smtpemail`
+ - Install the module composer by running `composer require excellence/module-feedback`
+ - enable the module by running `php bin/magento module:enable Excellence_Feedback`
  - apply database updates by running `php bin/magento setup:upgrade`\*
  - Flush the cache by running `php bin/magento cache:flush`
 
@@ -43,7 +43,7 @@
 ## Specifications
 
  - Controller
-	- frontend > email/index/index
+	- frontend > feedback/index/index
 
 
 ## Attributes

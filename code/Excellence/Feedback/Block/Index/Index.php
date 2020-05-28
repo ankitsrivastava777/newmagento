@@ -1,11 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
-namespace Excellence\Smtpemail\Block\Index;
+namespace Excellence\Feedback\Block\Index;
 
 class Index extends \Magento\Framework\View\Element\Template
 {
-
     /**
      * Constructor
      *
@@ -18,5 +18,10 @@ class Index extends \Magento\Framework\View\Element\Template
     ) {
         parent::__construct($context, $data);
     }
-}
+    public function _prepareLayout()
+    {
 
+        $this->pageConfig->getTitle()->set(__('Feedback'));
+        return parent::_prepareLayout();
+    }
+}

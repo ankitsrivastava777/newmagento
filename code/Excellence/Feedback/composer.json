@@ -1,5 +1,5 @@
 {
-    "name": "excellence/module-smtpemail",
+    "name": "excellence/module-feedback",
     "description": "",
     "type": "magento2-module",
     "license": "proprietary",
@@ -16,7 +16,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "Excellence\\Smtpemail\\": ""
+            "Excellence\\Feedback\\": ""
         }
     }
 }

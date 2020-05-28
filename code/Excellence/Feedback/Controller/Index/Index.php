@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Excellence\Smtpemail\Controller\Index;
+namespace Excellence\Feedback\Controller\Index;
 
 class Index extends \Magento\Framework\App\Action\Action
 {
@@ -29,7 +29,10 @@ class Index extends \Magento\Framework\App\Action\Action
      */
     public function execute()
     {
-        return $this->resultPageFactory->create();
+ 
+        $this->_view->loadLayout();
+        $this->_view->getLayout()->initMessages();
+        $this->_view->renderLayout();
     }
 }
 
