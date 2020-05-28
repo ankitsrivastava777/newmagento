@@ -1,14 +1,9 @@
 <?php
 
-namespace Codextblog\Customemail\Controller\Index;
-
-use Zend\Log\Filter\Timestamp;
+namespace Excellence\Feedback\Controller\Index;
 
 class Post extends \Magento\Framework\App\Action\Action
 {
-    const XML_PATH_EMAIL_RECIPIENT_NAME = 'trans_email/ident_support/name';
-    const XML_PATH_EMAIL_RECIPIENT_EMAIL = 'trans_email/ident_support/email';
-
     protected $_inlineTranslation;
     protected $_transportBuilder;
     protected $_scopeConfig;
@@ -16,14 +11,12 @@ class Post extends \Magento\Framework\App\Action\Action
 
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
-        \Magento\Framework\Translate\Inline\StateInterface $inlineTranslation,
         \Magento\Framework\Mail\Template\TransportBuilder $transportBuilder,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \Psr\Log\LoggerInterface $loggerInterface,
         array $data = []
 
     ) {
-        $this->_inlineTranslation = $inlineTranslation;
         $this->_transportBuilder = $transportBuilder;
         $this->_scopeConfig = $scopeConfig;
         $this->_logLoggerInterface = $loggerInterface;
@@ -35,23 +28,16 @@ class Post extends \Magento\Framework\App\Action\Action
     {
         $post = $this->getRequest()->getPost();
         try {
-            // Send Mail
-            $this->_inlineTranslation->suspend();
             $storeScope = \Magento\Store\Model\ScopeInterface::SCOPE_STORE;
 
             $sentToEmail = $this->_scopeConfig->getValue('trans_email/ident_support/email', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
             $sentToName = $this->_scopeConfig->getValue('trans_email/ident_support/name', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
-
-            $abc = array($sentToEmail, $sentToName);
-            // print_r($abc); exit;
             $sender = [
                 'name' => $sentToName,
                 'email' => $post['email']
             ];
-
-
             $transport = $this->_transportBuilder
-                ->setTemplateIdentifier('customemail_email_template')
+                ->setTemplateIdentifier('feedback_email_template')
                 ->setTemplateOptions(
                     [
                         'area' => 'frontend',
@@ -70,13 +56,12 @@ class Post extends \Magento\Framework\App\Action\Action
 
             $transport->sendMessage();
 
-            $this->_inlineTranslation->resume();
-            $this->messageManager->addSuccess('Email sent successfully');
+            $this->messageManager->addSuccess('Thank You for your feedback.');
         } catch (\Exception $e) {
             $this->messageManager->addError($e->getMessage());
             $this->_logLoggerInterface->debug($e->getMessage());
             exit;
         }
-        return $this->resultRedirectFactory->create()->setPath('customemail/index/index');
+        return $this->resultRedirectFactory->create()->setPath('feedback/index/index');
     }
 }

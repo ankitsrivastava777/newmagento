@@ -1,11 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
-namespace Codextblog\Customemail\Block\Index;
+namespace Excellence\Feedback\Block\Index;
 
 class Index extends \Magento\Framework\View\Element\Template
 {
-
     /**
      * Constructor
      *
@@ -22,8 +22,6 @@ class Index extends \Magento\Framework\View\Element\Template
     {
 
         $this->pageConfig->getTitle()->set(__('Feedback'));
-
         return parent::_prepareLayout();
     }
 }
-

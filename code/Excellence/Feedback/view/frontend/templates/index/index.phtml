@@ -1,4 +1,4 @@
-<form action="<?php echo $block->getBaseUrl() . 'customemail/index/post/'; ?>" name="customemaildata" method="post" id="contactForm-1" data-hasrequired="<?php echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
+<form action="<?php echo $block->getUrl('feedback/index/post/'); ?>" name="feedbackform" method="post" id="contactForm-1" data-hasrequired="<?php echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
     <fieldset class="fieldset">
         <div class="field email required">
             <label class="label" for="email"><span><?php echo __('Name') ?></span></label>
@@ -12,7 +12,7 @@
                 <input name="email" id="email" title="<?php echo __('Email') ?>" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}" />
             </div>
         </div>
-        <div class="field telephone">
+        <div class="field email">
             <label class="label" for="telephone"><span><?php echo __('Phone Number') ?></span></label>
             <div class="control">
                 <input name="phone" id="phone" title="<?php echo __('Phone') ?>" class="input-text" type="text" data-validate="{'validate-number':true}" />
